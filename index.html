@@ -60,11 +60,9 @@
 </main>
 <script>
 (function () {
-  // Page events for the Grafana "Landing page" row: same shape as the IPTViewer download page.
-  // >>> PASTE the write-only Loki push token between the quotes below (the LOKI_AUTH value from
-  // >>> channel-haven/download-iptviewer.html). While it is empty, nothing is sent.
-  var LOKI_AUTH = "MTUxNTA1NzpnbGNfZXlKdklqb2lNVFk1Tnpjd09TSXNJbTRpT2lKdFpYUnlhV056Wm5KdmJXRndjQzF0WlhSeWFXTnpabkp2YldGd2NDSXNJbXNpT2lJeE5HeEJkamM0YjIwMGIyVXdOVE51Wm1odU9XMVBPVm9pTENKdElqcDdJbklpT2lKd2NtOWtMV1YxTFdObGJuUnlZV3d0TUNKOWZRPT0=";
-  var LOKI_URL = "https://logs-prod-039.grafana.net/loki/api/v1/push";
+  // Page events for the Grafana "Landing page" row, relayed by the Cloudflare Worker in cloudflare-worker/site-events.js
+  // (browsers cannot post to Loki directly: the auth header needs a CORS preflight that Loki rejects).
+  var EVENTS_URL = "https://mmw-site-events.miav55555.workers.dev/";
   var SERVICE = "MyMagicWords Site";
   var PAGE_VERSION = "1";
   var params = new URLSearchParams(location.search);
@@ -78,11 +76,10 @@
   var base = { source: source, medium: params.get("utm_medium") || "", campaign: params.get("utm_campaign") || "", referrer: ref.slice(0, 200), platform: platform, browser: browser, in_app_browser: inApp, is_bot: isBot, lang: (navigator.language || "").slice(0, 8) };
   function esc(v) { var s = String(v); return /[ ="]/.test(s) ? '"' + s.replace(/\\/g, "\\\\").replace(/"/g, '\\"') + '"' : (s || '""'); }
   function send(name) {
-    if (!LOKI_AUTH) return;
     var parts = ["event=" + esc(name), "app_version=" + esc(PAGE_VERSION)];
     for (var k in base) parts.push("event_data_" + k + "=" + esc(base[k]));
     var payload = { streams: [{ stream: { service_name: SERVICE, deployment_environment: "production", kind: "event" }, values: [[String(Date.now()) + "000000", parts.join(" ")]] }] };
-    try { fetch(LOKI_URL, { method: "POST", headers: { "Content-Type": "application/json", Authorization: "Basic " + LOKI_AUTH }, body: JSON.stringify(payload), keepalive: true }); } catch (e) {}
+    try { fetch(EVENTS_URL, { method: "POST", headers: { "Content-Type": "text/plain" }, body: JSON.stringify(payload), keepalive: true }); } catch (e) {}
   }
   send("landing_view");
   document.getElementById("btn-join").addEventListener("click", function () { send("join_group_click"); });
