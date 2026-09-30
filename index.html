@@ -48,9 +48,9 @@
       <span class="num">2</span>
       <div>
         <b>Install from Google Play</b>
-        Tap <b>Become a tester</b>, then <b>Install</b> (or "Download it on Google Play").
-        <a class="btn sun" id="btn-install" href="https://play.google.com/apps/testing/com.masoft.mymagicwords" target="_blank" rel="noopener">Install from Google Play</a>
-        <div class="note">If Play says the app isn't available, wait a few minutes after joining the group and try again.</div>
+        Open the app's Google Play page and install it.
+        <a class="btn sun" id="btn-install" href="https://play.google.com/store/apps/details?id=com.masoft.mymagicwords" target="_blank" rel="noopener">Install from Google Play</a>
+        <div class="note">On the Play page tap <b>Become a tester</b> if it asks, then <b>Install</b>. If Play says the app isn't found, wait a few minutes after joining the group and try again, or use the <a id="btn-install-web" href="https://play.google.com/apps/testing/com.masoft.mymagicwords" target="_blank" rel="noopener">web opt-in page</a>.</div>
       </div>
     </div>
 
@@ -84,6 +84,7 @@
   send("landing_view");
   document.getElementById("btn-join").addEventListener("click", function () { send("join_group_click"); });
   document.getElementById("btn-install").addEventListener("click", function () { send("install_click"); });
+  document.getElementById("btn-install-web").addEventListener("click", function () { send("install_web_click"); });
 })();
 </script>
 </body>
