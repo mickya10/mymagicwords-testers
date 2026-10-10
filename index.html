@@ -66,7 +66,7 @@
   // (browsers cannot post to Loki directly: the auth header needs a CORS preflight that Loki rejects).
   var EVENTS_URL = "https://mmw-site-events.miav55555.workers.dev/";
   var SERVICE = "MyMagicWords Site";
-  var PAGE_VERSION = "1";
+  var PAGE_VERSION = "2";
   var params = new URLSearchParams(location.search);
   var ua = navigator.userAgent || "";
   var ref = document.referrer || "";
@@ -82,6 +82,25 @@
     for (var k in base) parts.push("event_data_" + k + "=" + esc(base[k]));
     var payload = { streams: [{ stream: { service_name: SERVICE, deployment_environment: "production", kind: "event" }, values: [[String(Date.now()) + "000000", parts.join(" ")]] }] };
     try { fetch(EVENTS_URL, { method: "POST", headers: { "Content-Type": "text/plain" }, body: JSON.stringify(payload), keepalive: true }); } catch (e) {}
+  }
+  // Inside an app's own browser (Taboola, Facebook, ...) on Android the parent isn't signed in to Google there, so
+  // joining the group or "Become a tester" fails. Open those pages in Chrome instead, and Install in the Play Store app.
+  var viaChrome = platform === "android" && inApp !== "none" && inApp !== "samsung_browser";
+  base.flow = viaChrome ? "chrome_intent" : "direct";
+  if (viaChrome) {
+    var toChrome = function (url) { return "intent://" + url.replace(/^https:\/\//, "") + "#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=" + encodeURIComponent(url) + ";end"; };
+    ["btn-join", "btn-install-web"].forEach(function (id) {
+      var a = document.getElementById(id);
+      a.href = toChrome(a.href);
+      a.removeAttribute("target");
+    });
+    var inst = document.getElementById("btn-install");
+    inst.href = "market://details?id=com.masoft.mymagicwords";
+    inst.removeAttribute("target");
+    var note = document.createElement("div");
+    note.className = "note";
+    note.textContent = "These buttons open Chrome, where you're signed in to Google.";
+    document.getElementById("btn-join").insertAdjacentElement("afterend", note);
   }
   send("landing_view");
   document.getElementById("btn-join").addEventListener("click", function () { send("join_group_click"); });
