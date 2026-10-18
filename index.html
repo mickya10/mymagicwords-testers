@@ -4,61 +4,106 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>My Magic Words – Family Test</title>
+<title>My Magic Words - Family Test</title>
+<meta property="og:title" content="My Magic Words - help us test a kids' English game">
+<meta property="og:description" content="An English learning game for kids aged 5-9, starting from zero. No ads, plays offline. Android closed test.">
+<meta property="og:image" content="hero.webp">
+<link rel="icon" href="icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root { --ink: #1e1b4b; --violet: #4f46e5; --sun: #f59e0b; --paper: #fff7ed; }
+  :root { --ink: #1e1b4b; --violet: #4f46e5; --sun: #f59e0b; --cream: #fffaf0; }
   * { box-sizing: border-box; }
-  body { margin: 0; background: linear-gradient(180deg, #fde68a 0%, #fff7ed 45%, #dbeafe 100%); font-family: "Nunito", "Segoe UI", Arial, sans-serif; color: var(--ink); min-height: 100vh; }
-  main { max-width: 520px; margin: 0 auto; padding: 24px 16px 40px; }
-  .card { background: #fff; border-radius: 24px; box-shadow: 0 10px 30px rgba(30,27,75,.12); padding: 24px 20px; }
-  .icon { display: block; width: 96px; height: 96px; margin: 0 auto 12px; border-radius: 24px; box-shadow: 0 6px 16px rgba(0,0,0,.15); }
-  h1 { font-size: 26px; text-align: center; margin: 0 0 4px; }
-  .tag { text-align: center; color: #6b7280; margin: 0 0 18px; font-size: 15px; }
-  p { line-height: 1.5; margin: 0 0 12px; font-size: 16px; }
-  .step { display: flex; gap: 12px; align-items: flex-start; margin: 18px 0; }
-  .num { flex: 0 0 34px; height: 34px; border-radius: 50%; background: var(--violet); color: #fff; font-weight: 800; display: grid; place-items: center; font-size: 18px; }
-  .step div { flex: 1; }
-  .step > div > b:first-child { display: block; font-size: 17px; margin-bottom: 4px; }
-  .btn { display: block; text-align: center; text-decoration: none; color: #fff; font-weight: 800; font-size: 18px; padding: 14px 18px; border-radius: 16px; margin-top: 8px; box-shadow: 0 6px 0 rgba(0,0,0,.15); }
-  .btn.violet { background: var(--violet); }
-  .btn.sun { background: var(--sun); color: #3b2a00; }
-  .btn:active { transform: translateY(3px); box-shadow: 0 3px 0 rgba(0,0,0,.15); }
-  .wait { background: #fef3c7; border-radius: 14px; padding: 10px 14px; font-size: 15px; line-height: 1.45; margin: 4px 0 6px; }
-  .note { font-size: 14px; color: #6b7280; margin-top: 6px; }
-  footer { text-align: center; color: #6b7280; font-size: 13px; margin-top: 18px; }
+  body { margin: 0; min-height: 100vh; font-family: "Fredoka", system-ui, sans-serif; font-weight: 500; color: var(--ink);
+    background: linear-gradient(180deg, #bfe3ff 0%, #fff7ed 40%, #dcfce7 100%); }
+  main { max-width: 520px; margin: 0 auto; padding: 18px 16px 36px; }
+  .hero { text-align: center; }
+  .icon { width: 72px; height: 72px; border-radius: 18px; box-shadow: 0 4px 12px rgba(0,0,0,.18); vertical-align: middle; }
+  .logo { font-size: 38px; font-weight: 700; margin: 8px 0 2px; color: var(--violet); }
+  .tag { font-weight: 600; opacity: .8; margin: 2px 0 10px; }
+  .art { display: block; width: 100%; height: auto; border-radius: 20px; border: 3px solid var(--ink); box-shadow: 0 5px 0 var(--ink); }
+  .card { background: var(--cream); border: 3px solid var(--ink); border-radius: 22px; box-shadow: 0 5px 0 var(--ink); padding: 18px 16px; margin-top: 16px; }
+  h2 { font-size: 22px; margin: 0 0 8px; text-align: center; }
+  p { line-height: 1.45; margin: 0 0 10px; font-size: 16px; }
+  ul.perks { list-style: none; padding: 0; margin: 4px 0; }
+  ul.perks li { margin: 7px 0; font-size: 16px; line-height: 1.4; }
+  .step { display: flex; gap: 12px; align-items: flex-start; margin: 16px 0 6px; }
+  .num { flex: 0 0 34px; height: 34px; border-radius: 50%; background: var(--violet); border: 3px solid var(--ink); color: #fff; font-weight: 700; display: grid; place-items: center; font-size: 17px; }
+  .step > div { flex: 1; min-width: 0; }
+  .step b.t { display: block; font-size: 18px; margin-bottom: 2px; }
+  .btn { display: block; text-align: center; text-decoration: none; color: var(--ink); font-weight: 700; font-size: 19px; padding: 13px 16px; border-radius: 16px; border: 3px solid var(--ink); box-shadow: 0 5px 0 var(--ink); margin-top: 10px; }
+  .btn.violet { background: var(--violet); color: #fff; text-shadow: 0 2px 0 rgba(0,0,0,.25); }
+  .btn.sun { background: var(--sun); }
+  .btn:active { transform: translateY(4px); box-shadow: 0 1px 0 var(--ink); }
+  .wait { background: #fef3c7; border: 2px dashed #d97706; border-radius: 14px; padding: 10px 12px; font-size: 15px; line-height: 1.4; margin: 8px 0; }
+  .note { font-size: 14px; opacity: .75; margin-top: 8px; line-height: 1.4; }
+  .ask li { margin: 6px 0; line-height: 1.4; }
+  footer { text-align: center; color: #3f3a6b; font-size: 13px; margin-top: 16px; font-weight: 600; }
 </style>
 </head>
 <body>
 <main>
+  <div class="hero">
+    <div class="logo"><img class="icon" src="icon-192.png" alt=""> My Magic Words</div>
+    <p class="tag" data-t="tag">English for kids aged 5-9, starting from zero</p>
+    <img class="art" src="hero.webp" alt="The world map of My Magic Words: a farm, a school, a park, a safari, dinosaurs, space and more" data-alt="alt">
+  </div>
+
   <div class="card">
-    <img class="icon" src="icon-192.png" alt="">
-    <h1>My Magic Words</h1>
-    <p class="tag">An English learning game for kids aged 5–9 · test version</p>
-    <p>Thanks for helping us! Two steps, using the same Google account that is signed in to the Play Store on your phone.</p>
-    <div class="wait"><b>Please be patient:</b> after joining, Google Play can take <b>from a few minutes up to a few hours</b> to show you the app. If it says "Item not found" or "App not available", that's normal: come back a bit later and try again.</div>
+    <h2 data-t="h1">Help us test a kids' English game</h2>
+    <p data-t="intro">Your child walks into a world, hears a word and taps the right thing: "Find the red apple!" Every word is spoken, so no reading is needed, and a short picture game at the start sets the level, even for a child who knows no English yet.</p>
+    <ul class="perks">
+      <li data-t="p1">🌍 Over 20 worlds: a farm, a supermarket, a kitchen, a school, a fun park, a safari, dinosaurs, space, a shopping mall and more</li>
+      <li data-t="p2">🗣️ Words, colours, numbers, letters and short sentences, at three levels that grow with your child</li>
+      <li data-t="p3">🛡️ No ads, no chat, plays offline</li>
+      <li data-t="p4">🎁 Free to try: many worlds are free in the test</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2 data-t="h2">Join the test in 3 steps</h2>
+    <p data-t="account">On an Android phone or tablet, with the same Google account your Play Store uses.</p>
+    <div class="wait" id="inapp-note" data-t="inapp" hidden><b>Heads-up:</b> you're in an in-app browser that isn't signed in to Google, so the buttons below open <b>Chrome</b> (or the Play Store), where your Google account is.</div>
 
     <div class="step">
       <span class="num">1</span>
       <div>
-        <b>Join the testers group</b>
-        On the page that opens, tap <b>Join group</b>. The group never sends email.
-        <a class="btn violet" id="btn-join" href="https://groups.google.com/g/my-magic-words-testers/about" target="_blank" rel="noopener">Join the group</a>
+        <b class="t" data-t="s1t">Join the testers group</b>
+        <span data-t="s1">On the page that opens, tap <b>Join group</b>. The group never sends email.</span>
+        <a class="btn violet" id="btn-join" href="https://groups.google.com/g/my-magic-words-testers/about" target="_blank" rel="noopener" data-t="b1">Join the group</a>
       </div>
     </div>
 
     <div class="step">
       <span class="num">2</span>
       <div>
-        <b>Install from Google Play</b>
-        Open the app's Google Play page and install it.
-        <a class="btn sun" id="btn-install" href="https://play.google.com/store/apps/details?id=com.masoft.mymagicwords" target="_blank" rel="noopener">Install from Google Play</a>
-        <div class="note">First open the <a id="btn-install-web" href="https://play.google.com/apps/testing/com.masoft.mymagicwords" target="_blank" rel="noopener">tester page</a> and tap <b>Become a tester</b>, then <b>Install</b> from Google Play. Have more than one Google account on your phone? Tap the round picture at the top right of the tester page and pick the account your Play Store uses.</div>
+        <b class="t" data-t="s2t">Become a tester</b>
+        <span data-t="s2">On the tester page, tap the button to <b>become a tester</b>. Without this step the app can't be installed.</span>
+        <a class="btn violet" id="btn-optin" href="https://play.google.com/apps/testing/com.masoft.mymagicwords" target="_blank" rel="noopener" data-t="b2">Become a tester</a>
+        <div class="note" data-t="accounts">More than one Google account on your phone? On the tester page, tap the round picture at the top right and pick the account your Play Store uses.</div>
       </div>
     </div>
 
-    <p><b>What to test:</b> play with your child for about 10 minutes, try the Kitchen and the Supermarket, and tell us what was confusing and what they liked. Some worlds are still being built, and the app updates itself through Play.</p>
+    <div class="step">
+      <span class="num">3</span>
+      <div>
+        <b class="t" data-t="s3t">Install from Google Play</b>
+        <a class="btn sun" id="btn-install" href="https://play.google.com/store/apps/details?id=com.masoft.mymagicwords" target="_blank" rel="noopener" data-t="b3">Install from Google Play</a>
+      </div>
+    </div>
+
+    <div class="wait" data-t="patience"><b>Please be patient:</b> after joining, Google Play can take from a few minutes up to a few hours to show you the app. If it says "Item not found", that's normal: try again a bit later.</div>
   </div>
-  <footer>MA Soft · My Magic Words · closed test</footer>
+
+  <div class="card">
+    <h2 data-t="h3">How you can help most</h2>
+    <ul class="ask">
+      <li data-t="a1"><b>Keep it installed for at least 2 weeks</b> and let your child play a few minutes <b>every day or two</b>. Google only lets a new app launch after real families have used it for 14 days.</li>
+      <li data-t="a2"><b>Tell us what you think:</b> in the app, tap <b>I'm a parent</b> on the start screen and fill in <b>Tell us what you think</b>. What did your child love? What was confusing?</li>
+      <li data-t="a3">The app updates itself through Play every few days with your ideas in it.</li>
+    </ul>
+  </div>
+  <footer data-t="footer">MA Soft · My Magic Words · Android closed test</footer>
 </main>
 <script>
 (function () {
@@ -66,8 +111,47 @@
   // (browsers cannot post to Loki directly: the auth header needs a CORS preflight that Loki rejects).
   var EVENTS_URL = "https://mmw-site-events.miav55555.workers.dev/";
   var SERVICE = "MyMagicWords Site";
-  var PAGE_VERSION = "2";
+  var PAGE_VERSION = "3";
   var params = new URLSearchParams(location.search);
+  // Spanish for phones set to Spanish (or ?lang=es). Google's own pages (the group and the Play tester page) already
+  // show in the phone's language, so their buttons aren't quoted.
+  var ES = {
+    title: "My Magic Words - Prueba para familias",
+    tag: "Inglés para niños de 5 a 9 años, desde cero",
+    alt: "El mapa de My Magic Words: una granja, una escuela, un parque, un safari, dinosaurios, el espacio y más",
+    h1: "Ayúdanos a probar un juego de inglés para niños",
+    intro: "Tu hijo entra en un mundo, oye una palabra y toca lo correcto: \"Find the red apple!\" Todas las palabras se dicen en voz alta, así que no hace falta saber leer, y un juego corto con dibujos al principio elige el nivel, incluso para un niño que todavía no sabe nada de inglés.",
+    p1: "🌍 Más de 20 mundos: una granja, un supermercado, una cocina, una escuela, un parque de diversiones, un safari, dinosaurios, el espacio, un centro comercial y más",
+    p2: "🗣️ Palabras, colores, números, letras y frases cortas, en tres niveles que crecen con tu hijo",
+    p3: "🛡️ Sin anuncios, sin chat, funciona sin internet",
+    p4: "🎁 Gratis para probar: muchos mundos son gratis en la prueba",
+    h2: "Únete a la prueba en 3 pasos",
+    account: "En un teléfono o tableta Android, con la misma cuenta de Google que usa tu Play Store.",
+    inapp: "<b>Ojo:</b> estás en un navegador dentro de otra app que no tiene tu cuenta de Google, así que los botones de abajo abren <b>Chrome</b> (o Play Store), donde sí está tu cuenta.",
+    s1t: "Únete al grupo de testers",
+    s1: "En la página que se abre, toca el botón para <b>unirte al grupo</b>. El grupo nunca envía correos.",
+    b1: "Unirme al grupo",
+    s2t: "Hazte tester",
+    s2: "En la página de testers, toca el botón para <b>hacerte tester</b>. Sin este paso la app no se puede instalar.",
+    b2: "Hacerme tester",
+    accounts: "¿Tienes más de una cuenta de Google en el teléfono? En la página de testers, toca la foto redonda de arriba a la derecha y elige la cuenta que usa tu Play Store.",
+    s3t: "Instala desde Google Play",
+    b3: "Instalar desde Google Play",
+    patience: "<b>Ten paciencia:</b> después de unirte, Google Play puede tardar desde unos minutos hasta unas horas en mostrarte la app. Si dice \"No se encontró el elemento\", es normal: vuelve a intentarlo un poco más tarde.",
+    h3: "Cómo puedes ayudar más",
+    a1: "<b>Mantenla instalada al menos 2 semanas</b> y deja que tu hijo juegue unos minutos <b>cada día o cada dos días</b>. Google solo deja lanzar una app nueva después de que familias reales la usen durante 14 días.",
+    a2: "<b>Cuéntanos qué piensas:</b> en la app, toca <b>I'm a parent</b> en la pantalla de inicio y rellena <b>Tell us what you think</b>. ¿Qué le encantó a tu hijo? ¿Qué fue confuso?",
+    a3: "La app se actualiza sola por Play cada pocos días, con tus ideas dentro.",
+    footer: "MA Soft · My Magic Words · prueba cerrada en Android"
+  };
+  var langParam = params.get("lang");
+  var pageLang = langParam ? (langParam === "es" ? "es" : "en") : /^es\b/i.test(navigator.language || "") ? "es" : "en";
+  if (pageLang === "es") {
+    document.documentElement.lang = "es";
+    document.title = ES.title;
+    document.querySelectorAll("[data-t]").forEach(function (el) { var t = ES[el.getAttribute("data-t")]; if (t) el.innerHTML = t; });
+    document.querySelectorAll("[data-alt]").forEach(function (el) { el.alt = ES[el.getAttribute("data-alt")]; });
+  }
   var ua = navigator.userAgent || "";
   var ref = document.referrer || "";
   var source = params.get("utm_source") || (/taboola/i.test(ref) ? "taboola" : ref ? "referral" : "direct");
@@ -75,7 +159,7 @@
   var browser = /CriOS/i.test(ua) ? "chrome-ios" : /Chrome/i.test(ua) && !/Edg/i.test(ua) ? "chrome" : /Safari/i.test(ua) && !/Chrome/i.test(ua) ? "safari" : /Firefox|FxiOS/i.test(ua) ? "firefox" : /Edg/i.test(ua) ? "edge" : "other";
   var inApp = /FBAN|FBAV/i.test(ua) ? "facebook" : /Instagram/i.test(ua) ? "instagram" : /TikTok/i.test(ua) ? "tiktok" : /WhatsApp/i.test(ua) ? "whatsapp" : /Telegram/i.test(ua) ? "telegram" : /Taboola/i.test(ua) ? "taboola" : /SamsungBrowser/i.test(ua) ? "samsung_browser" : /\bwv\b/.test(ua) ? (/taboola/i.test(ref) || source === "taboola" ? "taboola_webview" : "webview_unknown") : "none";
   var isBot = /bot|crawl|spider|slurp|facebookexternalhit|Twitterbot|Googlebot|bingbot|Applebot|WhatsApp|TelegramBot/i.test(ua) ? "true" : "false";
-  var base = { source: source, medium: params.get("utm_medium") || "", campaign: params.get("utm_campaign") || "", referrer: ref.slice(0, 200), platform: platform, browser: browser, in_app_browser: inApp, is_bot: isBot, lang: (navigator.language || "").slice(0, 8) };
+  var base = { source: source, medium: params.get("utm_medium") || "", campaign: params.get("utm_campaign") || "", referrer: ref.slice(0, 200), platform: platform, browser: browser, in_app_browser: inApp, is_bot: isBot, lang: (navigator.language || "").slice(0, 8), page_lang: pageLang };
   function esc(v) { var s = String(v); return /[ ="]/.test(s) ? '"' + s.replace(/\\/g, "\\\\").replace(/"/g, '\\"') + '"' : (s || '""'); }
   function send(name) {
     var parts = ["event=" + esc(name), "app_version=" + esc(PAGE_VERSION)];
@@ -84,28 +168,24 @@
     try { fetch(EVENTS_URL, { method: "POST", headers: { "Content-Type": "text/plain" }, body: JSON.stringify(payload), keepalive: true }); } catch (e) {}
   }
   // Inside an app's own browser (Taboola, Facebook, ...) on Android the parent isn't signed in to Google there, so
-  // joining the group or "Become a tester" fails. Open those pages in Chrome instead, and Install in the Play Store app.
+  // joining the group or becoming a tester fails. Open those pages in Chrome instead, and Install in the Play Store app.
   var viaChrome = platform === "android" && inApp !== "none" && inApp !== "samsung_browser";
   base.flow = viaChrome ? "chrome_intent" : "direct";
   if (viaChrome) {
-    var toChrome = function (url) { return "intent://" + url.replace(/^https:\/\//, "") + "#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=" + encodeURIComponent(url) + ";end"; };
-    ["btn-join", "btn-install-web"].forEach(function (id) {
-      var a = document.getElementById(id);
-      a.href = toChrome(a.href);
+    document.getElementById("inapp-note").hidden = false;
+    ["btn-join", "btn-optin"].forEach(function (id) {
+      var a = document.getElementById(id), url = a.href;
+      a.href = "intent://" + url.replace(/^https:\/\//, "") + "#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=" + encodeURIComponent(url) + ";end";
       a.removeAttribute("target");
     });
     var inst = document.getElementById("btn-install");
     inst.href = "market://details?id=com.masoft.mymagicwords";
     inst.removeAttribute("target");
-    var note = document.createElement("div");
-    note.className = "note";
-    note.textContent = "These buttons open Chrome, where you're signed in to Google.";
-    document.getElementById("btn-join").insertAdjacentElement("afterend", note);
   }
   send("landing_view");
   document.getElementById("btn-join").addEventListener("click", function () { send("join_group_click"); });
+  document.getElementById("btn-optin").addEventListener("click", function () { send("optin_click"); });
   document.getElementById("btn-install").addEventListener("click", function () { send("install_click"); });
-  document.getElementById("btn-install-web").addEventListener("click", function () { send("install_web_click"); });
 })();
 </script>
 </body>
