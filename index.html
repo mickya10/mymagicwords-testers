@@ -139,7 +139,8 @@
       a.removeAttribute("target");
     });
     var inst = document.getElementById("btn-install");
-    inst.href = "market://details?id=com.masoft.mymagicwords&referrer=utm_source%3Dtesters_page";
+    // An intent:// link to the Play Store app (a plain market:// link is often blocked in in-app browsers).
+    inst.href = "intent://details?id=com.masoft.mymagicwords&referrer=utm_source%3Dtesters_page#Intent;scheme=market;package=com.android.vending;S.browser_fallback_url=" + encodeURIComponent("https://play.google.com/store/apps/details?id=com.masoft.mymagicwords&referrer=utm_source%3Dtesters_page") + ";end";
     inst.removeAttribute("target");
   }
   send("landing_view");
